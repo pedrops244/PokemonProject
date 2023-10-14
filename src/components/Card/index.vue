@@ -1,8 +1,8 @@
 <template>
-  <v-col cols="4" md="6" xl="3">
-    <v-card style="cursor: pointer" flat class="p-2 border-b rounded-xl mb-3" color="secondary" elevation="5">
-      <v-img class="align-end text-white" :src="props.url" height="80px"> </v-img>
-      <v-card-title class="text-capitalize text-center">{{ props.name }}</v-card-title>
+  <v-col cols="6" lg="3" md="4">
+    <v-card style="cursor: pointer" class="rounded-xl mx-1 mb-2" color="secondary" elevation="5">
+      <v-img class="align-end text-white mt-3 mx-3" :src="props.url" height="90px"> </v-img>
+      <v-card-text class="text-capitalize text-subtitle-2 text-center">{{ props.name }}</v-card-text>
     </v-card>
   </v-col>
 </template>

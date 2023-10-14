@@ -1,6 +1,6 @@
 <template>
-  <v-card class="CardPokemonSelected" color="secondary" elevation="5">
-    <v-img class="pt-2" :src="props.url"> </v-img>
+  <v-card class="CardPokemonSelected rounded-xl" color="secondary" elevation="5">
+    <v-img class="img mt-5" :src="props.url" /> <v-img />
 
     <v-card-title class="text-capitalize text-center">{{ props.name }}</v-card-title>
     <v-divider></v-divider>
@@ -41,17 +41,16 @@ const props = defineProps({
 .CardPokemonSelected {
   height: 75vh;
 }
-.CardPokemonSelected img {
+.img {
   height: 250px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 958px) {
   .CardPokemonSelected {
     height: 30vh;
-    width: 40%;
-    margin: 0 auto 10px auto;
+    width: 100%;
   }
-  .CardPokemonSelected img {
+  .img {
     height: 100px;
   }
 }

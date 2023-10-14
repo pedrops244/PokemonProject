@@ -13,7 +13,7 @@
             />
           </v-col>
 
-          <v-col sm="12" md="6">
+          <v-col cols="12" md="6">
             <v-card class="card-list rounded-xl" color="primary">
               <v-card-text>
                 <v-text-field
@@ -59,7 +59,7 @@ const pokemons = ref([]);
 const pokemonSelected = reactive(ref());
 
 const fetchPokemons = () =>
-  api.get('/pokemon?limit=20').then((res) => {
+  api.get('/pokemon?limit=40').then((res) => {
     pokemons.value = res.data.results;
   });
 
