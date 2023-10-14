@@ -1,0 +1,93 @@
+<template>
+  <v-app>
+    <v-main>
+      <v-container>
+        <h1 class="mb-6 d-flex justify-center">Pokémons</h1>
+        <v-row mt-4>
+          <v-col sm="12" md="6">
+            <PokemonsSelected
+              :name="pokemonSelected?.name"
+              :xp="pokemonSelected?.base_experience"
+              :height="pokemonSelected?.height"
+              :url="urlBaseSvg + pokemonSelected?.species.url.split('/')[6] + '.svg'"
+            />
+          </v-col>
+
+          <v-col sm="12" md="6">
+            <v-card class="card-list rounded-xl" color="primary">
+              <v-card-text>
+                <v-text-field
+                  v-model="searchPokemon"
+                  clearable
+                  density="compact"
+                  variant="solo"
+                  label="Search pokemons"
+                  append-inner-icon="mdi-magnify"
+                  single-line
+                  hide-details
+                ></v-text-field>
+              </v-card-text>
+              <v-row>
+                <Card
+                  v-for="(pokemon, idx) in pokemonsFiltered"
+                  :key="idx"
+                  :name="pokemon.name"
+                  :image="pokemon.url"
+                  :url="urlBaseSvg + pokemon.url.split('/')[6] + '.svg'"
+                  :search="searchPokemon"
+                  @click="selectPokemon(pokemon)"
+                />
+              </v-row>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
+  </v-app>
+</template>
+
+<script setup>
+import Card from '@/components/Card';
+import PokemonsSelected from '@/components/Card/PokemonsSelected';
+import api from '@/services/axios';
+import { reactive } from 'vue';
+import { ref, onMounted, computed } from 'vue';
+
+const searchPokemon = ref('');
+const urlBaseSvg = ref('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/');
+const pokemons = ref([]);
+const pokemonSelected = reactive(ref());
+
+const fetchPokemons = () =>
+  api.get('/pokemon?limit=20').then((res) => {
+    pokemons.value = res.data.results;
+  });
+
+onMounted(fetchPokemons);
+
+const pokemonsFiltered = computed(() => {
+  if (pokemons.value && searchPokemon.value) {
+    return pokemons.value.filter((pokemon) => pokemon.name.toLowerCase().includes(searchPokemon.value.toLowerCase()));
+  }
+  return pokemons.value;
+});
+
+const selectPokemon = async (pokemon) => {
+  await api(pokemon.url).then((res) => (pokemonSelected.value = res.data));
+  console.log(pokemonSelected.value);
+};
+</script>
+
+<style scoped>
+.card-list {
+  max-height: 75vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .card-list {
+    max-height: 48vh;
+  }
+}
+</style>
