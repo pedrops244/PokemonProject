@@ -4,14 +4,26 @@
 
     <v-card-title class="text-capitalize text-center">{{ props.name }}</v-card-title>
     <v-divider></v-divider>
-    <v-row class="text-center">
-      <v-col>
+    <v-row class="text-center mt-5 text-capitalize">
+      <v-col cols="4">
         <strong>XP: </strong>
         <span>{{ props.xp }}</span>
       </v-col>
-      <v-col>
+      <v-col cols="4">
         <strong>Altura: </strong>
         <span>{{ props.height }}</span>
+      </v-col>
+      <v-col cols="4">
+        <strong>Peso: </strong>
+        <span>{{ props.weight }}</span>
+      </v-col>
+      <v-col cols="6">
+        <strong>Habilidade 1: </strong>
+        <span>{{ props.ability1 }}</span>
+      </v-col>
+      <v-col cols="6">
+        <strong>Habilidade 2: </strong>
+        <span>{{ props.ability2 }}</span>
       </v-col>
     </v-row>
   </v-card>
@@ -22,13 +34,30 @@ const props = defineProps({
     type: String,
     default: 'Pokemon',
   },
+
   xp: {
     type: Number,
     default: 0,
   },
+
   height: {
     type: Number,
     default: 0,
+  },
+
+  weight: {
+    type: Number,
+    default: 0,
+  },
+
+  ability1: {
+    type: String,
+    default: '',
+  },
+
+  ability2: {
+    type: String,
+    default: '',
   },
 
   url: {

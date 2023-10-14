@@ -10,6 +10,9 @@
               :xp="pokemonSelected?.base_experience"
               :height="pokemonSelected?.height"
               :url="urlBaseSvg + pokemonSelected?.species.url.split('/')[6] + '.svg'"
+              :weight="pokemonSelected?.weight"
+              :ability1="pokemonSelected?.abilities[0].ability.name"
+              :ability2="pokemonSelected?.abilities[1].ability.name"
             />
           </v-col>
 
