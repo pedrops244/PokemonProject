@@ -54,9 +54,9 @@
 import api from '@/services/axios';
 import { ref, onMounted, computed, reactive } from 'vue';
 
-import CardList from '@/components/CardList';
-import PokemonSelected from '@/components/PokemonSelected';
+import CardList from '@/components/CardList.vue';
 import Header from '@/components/Header.vue';
+import PokemonSelected from '@/components/PokemonSelected.vue';
 
 const urlBaseSvg = ref('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/');
 const pokemons = ref(reactive(ref()));
