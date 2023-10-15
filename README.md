@@ -1,69 +1,33 @@
-# base
+<div>
+  
+## Pokemón Project
+Application to consume the PokéAPI.
 
-## Project setup
+## Deploy
+- 
 
-```
-# yarn
-yarn
+## Functionalities
+- The app lists all Pokémon with their name and photo.
+- When the Pokémon is selected, it displays the XP, height, weight, and both abilities, if any.
+  
+## Technologies used
+- **Frontend:** VueJs
+- **Stylization:** Vuetify and CSS
+- **API:** https://pokeapi.co/
 
-# npm
-npm install
+</div>
 
-# pnpm
-pnpm install
+<div>
+  
+# Projeto Pokémon
+Aplicativo para consumir a PokéAPI.
 
-# pnpm
-bun install
-```
-
-### Compiles and hot-reloads for development
-
-```
-# yarn
-yarn dev
-
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# bun
-bun run dev
-```
-
-### Compiles and minifies for production
-
-```
-# yarn
-yarn build
-
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# bun
-bun run build
-```
-
-### Lints and fixes files
-
-```
-# yarn
-yarn lint
-
-# npm
-npm run lint
-
-# pnpm
-pnpm lint
-
-# bun
-bun run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://vitejs.dev/config/).
+## Funcionalidades
+- O aplicativo lista todos os Pokémon com nome e foto.
+- Quando o Pokémon é selecionado, ele exibe XP, altura, peso e ambas as habilidades, se houver.
+  
+## Tecnologias utilizadas
+- **Frontend:** VueJs
+- **Estilização:** Vuetify e CSS
+- **API:** https://pokeapi.co/
+</div>
