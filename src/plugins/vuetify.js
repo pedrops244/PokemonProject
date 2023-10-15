@@ -8,13 +8,6 @@ export default createVuetify({
     global: {
       ripple: true,
     },
-    vBtn: {
-      variant: 'tonal',
-      color: 'primary',
-    },
-    VTextField: {
-      variant: 'outlined',
-    },
   },
 
   theme: {
