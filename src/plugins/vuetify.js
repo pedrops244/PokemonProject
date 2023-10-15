@@ -4,12 +4,6 @@ import 'vuetify/styles';
 import { createVuetify } from 'vuetify';
 
 export default createVuetify({
-  defaults: {
-    global: {
-      ripple: true,
-    },
-  },
-
   theme: {
     themes: {
       light: {
