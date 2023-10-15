@@ -64,13 +64,9 @@ const searchPokemon = ref('');
 const pokemonSelected = reactive(ref());
 
 const fetchPokemons = async () => {
-  try {
-    await api.get('/pokemon?limit=151&offset=0').then((res) => {
-      pokemons.value = res.data.results;
-    });
-  } catch (e) {
-    console.log(e);
-  }
+  await api.get('/pokemon?limit=151&offset=0').then((res) => {
+    pokemons.value = res.data.results;
+  });
 };
 
 onMounted(fetchPokemons);
