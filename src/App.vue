@@ -58,15 +58,20 @@ import CardList from '@/components/CardList';
 import PokemonSelected from '@/components/PokemonSelected';
 import Header from '@/components/Header.vue';
 
-const searchPokemon = ref('');
 const urlBaseSvg = ref('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/');
-const pokemons = ref([]);
+const pokemons = ref(reactive(ref()));
+const searchPokemon = ref('');
 const pokemonSelected = reactive(ref());
 
-const fetchPokemons = async () =>
-  await api.get('/pokemon?limit=151&offset=0').then((res) => {
-    pokemons.value = res.data.results;
-  });
+const fetchPokemons = async () => {
+  try {
+    await api.get('/pokemon?limit=151&offset=0').then((res) => {
+      pokemons.value = res.data.results;
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
 
 onMounted(fetchPokemons);
 
@@ -77,9 +82,13 @@ const pokemonsFiltered = computed(() => {
   return pokemons.value;
 });
 
-const selectPokemon = (pokemon) => {
-  api(pokemon.url).then((res) => (pokemonSelected.value = res.data));
-  console.log(pokemonSelected.value);
+const selectPokemon = async (pokemon) => {
+  try {
+    await api(pokemon.url).then((res) => (pokemonSelected.value = res.data));
+    console.log(pokemonSelected.value);
+  } catch (e) {
+    console.log(e);
+  }
 };
 </script>
 
