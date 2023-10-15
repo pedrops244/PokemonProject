@@ -33,7 +33,7 @@
 const props = defineProps({
   name: {
     type: String,
-    default: 'Pokémon',
+    default: 'EGG!?',
   },
 
   xp: {

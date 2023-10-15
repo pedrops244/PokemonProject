@@ -6,11 +6,11 @@
 
         <v-row mt-4>
           <v-col sm="12" md="6">
-            <PokemonsSelected
+            <PokemonSelected
               :name="pokemonSelected?.name"
               :xp="pokemonSelected?.base_experience"
               :height="pokemonSelected?.height"
-              :url="urlBaseSvg + pokemonSelected?.species.url.split('/')[6] + '.svg'"
+              :url="pokemonSelected?.sprites.other.dream_world.front_default"
               :weight="pokemonSelected?.weight"
               :ability1="pokemonSelected?.abilities[0]?.ability.name"
               :ability2="pokemonSelected?.abilities[1]?.ability.name"
@@ -55,7 +55,7 @@ import api from '@/services/axios';
 import { ref, onMounted, computed, reactive } from 'vue';
 
 import CardList from '@/components/CardList';
-import PokemonsSelected from '@/components/PokemonsSelected';
+import PokemonSelected from '@/components/PokemonSelected';
 import Header from '@/components/Header.vue';
 
 const searchPokemon = ref('');
@@ -64,7 +64,7 @@ const pokemons = ref([]);
 const pokemonSelected = reactive(ref());
 
 const fetchPokemons = async () =>
-  await api.get('/pokemon?limit=151').then((res) => {
+  await api.get('/pokemon?limit=151&offset=0').then((res) => {
     pokemons.value = res.data.results;
   });
 
