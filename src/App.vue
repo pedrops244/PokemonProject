@@ -2,7 +2,10 @@
   <v-app>
     <v-main class="background">
       <v-container fluid>
-        <h1 class="mb-6 d-flex justify-center">Pokémons</h1>
+        <div class="d-flex justify-center mb-3">
+          <img src="/src/assets/Pokemon.svg" style="width: 300px" />
+        </div>
+
         <v-row mt-4>
           <v-col sm="12" md="6">
             <PokemonsSelected
@@ -91,7 +94,15 @@ const selectPokemon = async (pokemon) => {
   overflow-y: scroll;
   overflow-x: hidden;
 }
-
+.background {
+  background: linear-gradient(
+    0deg,
+    rgba(0, 41, 150, 1) 0%,
+    rgba(255, 255, 255, 0.664),
+    rgba(106, 196, 233, 0.9360119047619048) 100%
+  );
+  overflow: hidden;
+}
 @media (max-width: 768px) {
   .card-list {
     max-height: 48vh;

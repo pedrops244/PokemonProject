@@ -1,7 +1,6 @@
 <template>
-  <v-card class="CardPokemonSelected rounded-xl" color="purple-darken-2" elevation="5">
-    <v-img v-if="props.name" class="img mt-5" :src="props.url" />
-    <v-img v-else class="img mt-5" src="../../assets/logo.svg" />
+  <v-card class="CardPokemonSelected rounded-xl" elevation="5">
+    <v-img class="img mt-5" :src="props.url" />
 
     <v-card-title class="text-capitalize text-center">{{ props.name }}</v-card-title>
     <v-divider></v-divider>
@@ -33,7 +32,7 @@
 const props = defineProps({
   name: {
     type: String,
-    default: 'Pokemon',
+    default: 'Pokémon',
   },
 
   xp: {
@@ -53,31 +52,33 @@ const props = defineProps({
 
   ability1: {
     type: String,
-    default: '',
+    default: '??',
   },
 
   ability2: {
     type: String,
-    default: '',
+    default: '??',
   },
 
   url: {
     type: String,
-    default: 'https://img.pokemondb.net/artwork/vector/gengar-mega.png',
+    default: '/src/assets/Pokemon+Egg-1320568182356361824.svg',
   },
 });
 </script>
 <style scoped>
 .CardPokemonSelected {
   height: 75vh;
+  background: linear-gradient(0deg, rgba(244, 216, 0, 0.8) 0%, rgba(244, 0, 0, 0.8) 100%);
 }
+
 .img {
   height: 300px;
 }
 
 @media (max-width: 958px) {
   .CardPokemonSelected {
-    height: 33vh;
+    height: 45vh;
     width: 100%;
   }
   .img {
