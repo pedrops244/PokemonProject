@@ -77,13 +77,9 @@ const pokemonsFiltered = computed(() => {
   return pokemons.value;
 });
 
-const selectPokemon = async (pokemon) => {
-  try {
-    await api(pokemon.url).then((res) => (pokemonSelected.value = res.data));
-    console.log(pokemonSelected.value);
-  } catch (e) {
-    console.log(e);
-  }
+const selectPokemon = (pokemon) => {
+  api(pokemon.url).then((res) => (pokemonSelected.value = res.data));
+  console.log(pokemonSelected.value);
 };
 </script>
 
