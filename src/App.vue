@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <v-main>
-      <v-container>
+    <v-main class="background">
+      <v-container fluid>
         <h1 class="mb-6 d-flex justify-center">Pokémons</h1>
         <v-row mt-4>
           <v-col sm="12" md="6">
@@ -76,8 +76,12 @@ const pokemonsFiltered = computed(() => {
 });
 
 const selectPokemon = async (pokemon) => {
-  await api(pokemon.url).then((res) => (pokemonSelected.value = res.data));
-  console.log(pokemonSelected.value);
+  try {
+    await api(pokemon.url).then((res) => (pokemonSelected.value = res.data));
+    console.log(pokemonSelected.value);
+  } catch (e) {
+    console.log(e);
+  }
 };
 </script>
 

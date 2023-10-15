@@ -1,10 +1,11 @@
 <template>
-  <v-card class="CardPokemonSelected rounded-xl" color="secondary" elevation="5">
-    <v-img class="img mt-5" :src="props.url" /> <v-img />
+  <v-card class="CardPokemonSelected rounded-xl" color="purple-darken-2" elevation="5">
+    <v-img v-if="props.name" class="img mt-5" :src="props.url" />
+    <v-img v-else class="img mt-5" src="../../assets/logo.svg" />
 
     <v-card-title class="text-capitalize text-center">{{ props.name }}</v-card-title>
     <v-divider></v-divider>
-    <v-row class="text-center mt-5 text-capitalize">
+    <v-row class="table text-center mt-5 text-capitalize">
       <v-col cols="4">
         <strong>XP: </strong>
         <span>{{ props.xp }}</span>
@@ -71,12 +72,12 @@ const props = defineProps({
   height: 75vh;
 }
 .img {
-  height: 250px;
+  height: 300px;
 }
 
 @media (max-width: 958px) {
   .CardPokemonSelected {
-    height: 30vh;
+    height: 33vh;
     width: 100%;
   }
   .img {
