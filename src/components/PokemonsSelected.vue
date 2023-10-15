@@ -1,7 +1,6 @@
 <template>
   <v-card class="CardPokemonSelected rounded-xl" elevation="5">
     <v-img class="img mt-5" :src="props.url" />
-
     <v-card-title class="text-capitalize text-center">{{ props.name }}</v-card-title>
     <v-divider></v-divider>
     <v-row class="table text-center mt-5 text-capitalize">
@@ -19,10 +18,12 @@
       </v-col>
       <v-col cols="6">
         <strong>Habilidade 1: </strong>
+        <br />
         <span>{{ props.ability1 }}</span>
       </v-col>
       <v-col cols="6">
         <strong>Habilidade 2: </strong>
+        <br />
         <span>{{ props.ability2 }}</span>
       </v-col>
     </v-row>

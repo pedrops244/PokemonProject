@@ -2,9 +2,7 @@
   <v-app>
     <v-main class="background">
       <v-container fluid>
-        <div class="d-flex justify-center mb-3">
-          <img src="/src/assets/Pokemon.svg" style="width: 300px" />
-        </div>
+        <Header />
 
         <v-row mt-4>
           <v-col sm="12" md="6">
@@ -14,8 +12,8 @@
               :height="pokemonSelected?.height"
               :url="urlBaseSvg + pokemonSelected?.species.url.split('/')[6] + '.svg'"
               :weight="pokemonSelected?.weight"
-              :ability1="pokemonSelected?.abilities[0].ability.name"
-              :ability2="pokemonSelected?.abilities[1].ability.name"
+              :ability1="pokemonSelected?.abilities[0]?.ability.name"
+              :ability2="pokemonSelected?.abilities[1]?.ability.name"
             />
           </v-col>
 
@@ -34,7 +32,7 @@
                 ></v-text-field>
               </v-card-text>
               <v-row>
-                <Card
+                <CardList
                   v-for="(pokemon, idx) in pokemonsFiltered"
                   :key="idx"
                   :name="pokemon.name"
@@ -53,19 +51,20 @@
 </template>
 
 <script setup>
-import Card from '@/components/Card';
-import PokemonsSelected from '@/components/Card/PokemonsSelected';
 import api from '@/services/axios';
-import { reactive } from 'vue';
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, reactive } from 'vue';
+
+import CardList from '@/components/CardList';
+import PokemonsSelected from '@/components/PokemonsSelected';
+import Header from '@/components/Header.vue';
 
 const searchPokemon = ref('');
 const urlBaseSvg = ref('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/');
 const pokemons = ref([]);
 const pokemonSelected = reactive(ref());
 
-const fetchPokemons = () =>
-  api.get('/pokemon?limit=40').then((res) => {
+const fetchPokemons = async () =>
+  await api.get('/pokemon?limit=151').then((res) => {
     pokemons.value = res.data.results;
   });
 
@@ -101,7 +100,6 @@ const selectPokemon = async (pokemon) => {
     rgba(255, 255, 255, 0.664),
     rgba(106, 196, 233, 0.9360119047619048) 100%
   );
-  overflow: hidden;
 }
 @media (max-width: 768px) {
   .card-list {
