@@ -10,7 +10,7 @@
               :name="pokemonSelected?.name"
               :xp="pokemonSelected?.base_experience"
               :height="pokemonSelected?.height"
-              :url="pokemonSelected?.sprites.other.dream_world.front_default"
+              :url="pokemonSelected?.sprites?.other?.dream_world.front_default"
               :weight="pokemonSelected?.weight"
               :ability1="pokemonSelected?.abilities[0]?.ability.name"
               :ability2="pokemonSelected?.abilities[1]?.ability.name"
