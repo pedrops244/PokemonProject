@@ -63,11 +63,17 @@ const pokemons = ref(reactive(ref()));
 const searchPokemon = ref('');
 const pokemonSelected = reactive(ref());
 
-onMounted(() => {
-  fetch('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0')
-    .then((res) => res.json())
-    .then((res) => (pokemons.value = res.results));
-});
+const fetchPokemons = async () => {
+  try {
+    await api.get('/pokemon?limit=151&offset=0').then((res) => {
+      pokemons.value = res.data.results;
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+onMounted(fetchPokemons);
 
 const pokemonsFiltered = computed(() => {
   if (pokemons.value && searchPokemon.value) {
@@ -81,6 +87,7 @@ const selectPokemon = async (pokemon) => {
     .then((res) => res.json())
     .then((res) => (pokemonSelected.value = res))
     .catch((err) => alert(err));
+
   console.log(pokemonSelected.value);
 };
 </script>
