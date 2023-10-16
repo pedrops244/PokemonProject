@@ -11,9 +11,9 @@
               :xp="pokemonSelected?.base_experience"
               :height="pokemonSelected?.height"
               :weight="pokemonSelected?.weight"
-              :url="pokemonSelected?.sprites.other.dream_world.front_default"
-              :ability1="pokemonSelected?.abilities ? pokemonSelected?.abilities[0].ability.name : '??'"
-              :ability2="pokemonSelected?.abilities ? pokemonSelected?.abilities[1].ability.name : '??'"
+              :url="pokemonSelected?.sprites?.other?.dream_world.front_default"
+              :ability1="pokemonSelected?.abilities ? pokemonSelected?.abilities[0]?.ability.name : '??'"
+              :ability2="pokemonSelected?.abilities ? pokemonSelected?.abilities[1]?.ability.name : '??'"
             />
           </v-col>
 
