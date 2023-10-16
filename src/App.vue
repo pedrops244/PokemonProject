@@ -51,9 +51,8 @@
 </template>
 
 <script setup>
-import api from '@/services/axios';
 import axios from 'axios';
-import { ref, onMounted, computed, reactive } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 
 import CardList from '@/components/CardList.vue';
 import Header from '@/components/Header.vue';
@@ -65,7 +64,7 @@ const searchPokemon = ref('');
 const pokemonSelected = ref();
 
 const fetchPokemons = async () => {
-  await api.get('/pokemon?limit=151&offset=0').then((res) => {
+  await axios.get('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0').then((res) => {
     pokemons.value = res.data.results;
   });
 };
