@@ -1,6 +1,7 @@
 <template>
   <v-card class="CardPokemonSelected rounded-xl" elevation="5">
     <v-img class="img mt-5" :src="props.url" />
+
     <v-card-title class="text-capitalize text-center">{{ props.name }}</v-card-title>
     <v-divider></v-divider>
     <v-row class="table text-center mt-5 text-capitalize">
@@ -63,7 +64,7 @@ const props = defineProps({
 
   url: {
     type: String,
-    default: '/src/assets/Pokemon+Egg-1320568182356361824.svg',
+    default: 'https://icons-for-free.com/iconfiles/png/512/Pokemon+Egg-1320568182356361824.png',
   },
 });
 </script>

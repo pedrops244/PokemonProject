@@ -10,10 +10,10 @@
               :name="pokemonSelected?.name"
               :xp="pokemonSelected?.base_experience"
               :height="pokemonSelected?.height"
-              :url="pokemonSelected?.sprites?.other?.dream_world.front_default"
               :weight="pokemonSelected?.weight"
-              :ability1="pokemonSelected?.abilities[0]?.ability.name"
-              :ability2="pokemonSelected?.abilities[1]?.ability.name"
+              :url="pokemonSelected?.sprites.other.dream_world.front_default"
+              :ability1="pokemonSelected?.abilities ? pokemonSelected?.abilities[0].ability.name : '??'"
+              :ability2="pokemonSelected?.abilities ? pokemonSelected?.abilities[1].ability.name : '??'"
             />
           </v-col>
 
@@ -52,6 +52,7 @@
 
 <script setup>
 import api from '@/services/axios';
+import axios from 'axios';
 import { ref, onMounted, computed, reactive } from 'vue';
 
 import CardList from '@/components/CardList.vue';
@@ -59,9 +60,9 @@ import Header from '@/components/Header.vue';
 import PokemonSelected from '@/components/PokemonSelected.vue';
 
 const urlBaseSvg = ref('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/');
-const pokemons = ref(reactive(ref()));
+const pokemons = ref();
 const searchPokemon = ref('');
-const pokemonSelected = reactive(ref());
+const pokemonSelected = ref();
 
 const fetchPokemons = async () => {
   await api.get('/pokemon?limit=151&offset=0').then((res) => {
@@ -79,12 +80,10 @@ const pokemonsFiltered = computed(() => {
 });
 
 const selectPokemon = async (pokemon) => {
-  await fetch(pokemon.url)
-    .then((res) => res.json())
-    .then((res) => (pokemonSelected.value = res))
+  await axios
+    .get(pokemon.url)
+    .then((res) => (pokemonSelected.value = res.data))
     .catch((err) => alert(err));
-
-  console.log(pokemonSelected.value);
 };
 </script>
 
