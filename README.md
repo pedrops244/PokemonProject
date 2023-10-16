@@ -4,7 +4,7 @@
 Application to consume the PokéAPI.
 
 ## Deploy
-- 
+- https://pokemon-pedr1n.netlify.app/
 
 ## Functionalities
 - The app lists all Pokémon with their name and photo.
