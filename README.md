@@ -19,7 +19,7 @@ Application to consume the PokéAPI.
 
 <div>
   
-# Projeto Pokémon
+## Projeto Pokémon
 Aplicativo para consumir a PokéAPI.
 
 ## Funcionalidades
