@@ -64,7 +64,7 @@ const props = defineProps({
 
   url: {
     type: String,
-    default: 'https://icons-for-free.com/iconfiles/png/512/Pokemon+Egg-1320568182356361824.png',
+    default: 'https://icons-for-free.com/iff/png/512/Pokemon+Egg-1320568182356361824.png',
   },
 });
 </script>
